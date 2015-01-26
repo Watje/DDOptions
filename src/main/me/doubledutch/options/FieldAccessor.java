@@ -16,6 +16,18 @@
 
 package me.doubledutch.options;
 
+/**
+ * Implementing classes are responsible for actually setting
+ * the value of a field on an instance. The type of field defines
+ * how the value is converted to and instance.
+ *
+ * E.g. if {@link #supports(String)} supports type "boolean" then
+ * {@link #set(Object, String, String)} would probably convert values
+ * "1", "0", "true", "false", "yes", "no" to corresponding boolean
+ * object and set it to the field.
+ *
+ * @see me.doubledutch.options.accessor.AbstractFieldAccessor
+ */
 public interface FieldAccessor {
     boolean supports(String type);
     Result set(Object target, String field, String value);

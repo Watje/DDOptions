@@ -16,6 +16,10 @@
 
 package me.doubledutch.options;
 
+/**
+ * Defines whether setting a value on a field was successful. If not,
+ * either or both {@link #exception} and {@link #errorMessage} will be set.
+ */
 public class Result {
     Exception exception;
     String errorMessage;
