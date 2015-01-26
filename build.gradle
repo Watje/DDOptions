@@ -1,17 +1,37 @@
-repositories {
-    mavenCentral()
-}
+group = 'me.doubledutch'
+version = '0.1a'
 
 apply plugin: 'java'
+apply plugin: 'maven'
 
 sourceCompatibility = 1.7
-version = '0.1a'
+targetCompatibility = 1.7
+
+defaultTasks = ['clean', 'jar', 'install']
+
+File javaHome = new File(System.getProperty('java.home'))
+logger.lifecycle "Using Java from $javaHome (version ${System.getProperty('java.version')})"
+
+
+
 jar {
     baseName = 'ddoptions'
     manifest {
         attributes 'Implementation-Title': 'DDOptions', 'Implementation-Version': version
     }
 }
+
+buildscript {
+    repositories {
+        mavenLocal()
+    }
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
 
 dependencies {
     testCompile 'junit:junit:4.+'
